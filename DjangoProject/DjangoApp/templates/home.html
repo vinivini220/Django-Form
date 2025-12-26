@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-app</title>
+</head>
+
+<body>
+    <h2>Todo List</h2>
+    <a href="{% url 'add' %}">Add Task</a>
+    {%for item in task%}
+    <table>
+        <center>
+        
+        <li>
+            {% if item.completed %}
+            <strike>{{item.title}}</strike>
+            {% else %}
+            {{item.title}}
+            {% endif %}
+            <a href="{% url 'edit_task' item.id %}">Edit</a>
+            <a href="{% url 'delete_task' item.id %}">Delete</a>
+
+        </li>
+    </center>
+
+    </table>
+
+
+
+    {% endfor%}
+    <br>
+    <br>
+    <a href="{% url 'home' %}">Back</a>
+
+
+</body>
+
+</html>
