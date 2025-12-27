@@ -20,6 +20,7 @@ def add_task(request):
 
 
 
+
 def edit_task(request,id):
     task=get_object_or_404(Task,id=id)
     form=TaskForm(instance=task) 
@@ -29,6 +30,7 @@ def edit_task(request,id):
            form.save()
            return redirect('home')
     return render(request,'edit.html',{'form':form})
+
 
 def delete_task(request,id):
     task=get_object_or_404(Task,id=id)
